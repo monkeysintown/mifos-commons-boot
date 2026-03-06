@@ -1,0 +1,29 @@
+        AnsiConsole.systemInstall();
+
+        try {
+            while(exitCode == 0) {
+                exitCode = loop();
+            }
+        } catch (Exception e) {
+            exitCode = -1;
+            throw new MifosCliException(MifosError.of(MIFOS_COMMONS_ERROR_CLI_GENERIC, e));
+        } finally {
+            AnsiConsole.systemUninstall();
+        }
+
+    private int loop() {
+        try {
+            systemRegistry.cleanUp();
+            var line = reader.readLine("mifos> ", null, (MaskingCallback) null, null);
+            systemRegistry.execute(line);
+        } catch (UserInterruptException _) {
+            // ignore
+        } catch (EndOfFileException _) {
+            // ignore
+            return -1;
+        } catch (Exception e) {
+            systemRegistry.trace(e);
+        }
+
+        return 0;
+    }

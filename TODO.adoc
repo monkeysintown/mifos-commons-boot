@@ -1,0 +1,1 @@
+- anonymize, hash, encrypt: https://towardsdev.com/implementing-data-anonymization-in-spring-boot-with-custom-annotations-and-jackson-154abbf6922c?sk=eb9b43950861af650ea49c1ab699aa10

@@ -1,0 +1,1 @@
+org.mifos.commons.boot.transport.grpc.reactive.autoconfigure.MifosTransportGrpcReactiveAutoConfiguration

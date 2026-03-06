@@ -1,0 +1,15 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - CLI - Tamboui"
+
+dependencies {
+    implementation project(":mifos-commons-boot-core")
+    implementation "org.springframework.boot:spring-boot-starter"
+
+    implementation "dev.tamboui:tamboui-toolkit"
+    implementation "dev.tamboui:tamboui-css"
+    implementation "dev.tamboui:tamboui-aesh-backend"
+    implementation "dev.tamboui:tamboui-image"
+}
