@@ -1,0 +1,69 @@
+templateId: ""
+groupeId: ""
+description: ""
+prompts:
+  - key: project_name
+    question: "Project name"
+    defaultValue: "my-app"
+    validation:
+      required: true
+      regex: "^[a-z0-9\\-]+$"
+      minLength: 2
+      maxLength: 50
+
+  - key: package_name
+    question: "Base package name"
+    defaultValue: "com.example.{{ project_name | camelCase }}"
+    validation:
+      required: true
+      regex: "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+
+  - key: project_description
+    question: "Project description"
+    defaultValue: "{{ project_name | PascalCase }} Application"
+    validation:
+      maxLength: 200
+
+  - key: java_version
+    question: "Java version"
+    type: choice
+    defaultValue: "25"
+    choices:
+      - "25"
+      - "21"
+
+  - key: spring_boot_version
+    question: "Spring Boot version"
+    type: choice
+    defaultValue: "4.0.6"
+    choices:
+      - "4.1.0"
+      - "4.0.6"
+      - "3.5.0"
+
+  - key: classifier
+    question: "Classifier"
+    type: choice
+    defaultValue: "imperative"
+    choices:
+      - "imperative"
+      - "reactive"
+
+  - key: license
+    question: "License"
+    type: choice
+    defaultValue: "MIT"
+    choices:
+      - "MIT"
+      - "Apache-2.0"
+      - "GPL-3.0"
+      - "BSD-3-Clause"
+      - "Proprietary"
+
+computed:
+  package_path: "{{ package_name | package_path }}"
+  project_name_snake: "{{ project_name | snake_case }}"
+  project_name_camel: "{{ project_name | camelCase }}"
+  project_name_pascal: "{{ project_name | PascalCase }}"
+  project_name_kebab: "{{ project_name | kebab_case }}"
+  current_year: "{{ year }}"

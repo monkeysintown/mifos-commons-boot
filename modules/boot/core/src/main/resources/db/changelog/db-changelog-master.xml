@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+    <include file="org/quartz/impl/jdbcjobstore/liquibase.quartz.init.xml" />
+    -->
+    <include file="parts/00001_init_pgcrypto_extension.xml" relativeToChangelogFile="true" />
+    <include file="parts/00002_init_postgis_extension.xml" relativeToChangelogFile="true" />
+    <include file="parts/00003_init_btree_gin_extension.xml" relativeToChangelogFile="true" />
+    <includeAll path="classpath*:db/module-changelog/" maxDepth="1" />
+</databaseChangeLog>

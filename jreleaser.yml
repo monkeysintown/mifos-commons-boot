@@ -1,0 +1,75 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+project:
+  name: "mifos-commons-boot"
+  version: "0.1.0-SNAPSHOT"
+  license: "MPL-2.0"
+  inceptionYear: "2026"
+  vendor: "Mifos Initiative"
+  copyright: "Copyright (c) 2026 Mifos Initiative"
+  authors:
+    - "Aleksandar Vidakovic"
+  links:
+    bugTracker: "https://mifosforge.jira.com"
+    contribute: "https://mifos.org"
+    documentation: "https://docs.mifos.org"
+    donation: "https://mifos.org/take-action/donation-options"
+    faq: "https://mifos.org/resources/support"
+    contact: "https://mifos.org/about-us/contact-us"
+
+signing:
+  pgp:
+    active: ALWAYS
+    armored: true
+
+catalog:
+  sbom:
+    syft:
+      active: ALWAYS
+  swid:
+    mifos:
+      active: ALWAYS
+
+release:
+  github:
+    enabled: true
+    # TODO: change this to openMf
+    owner: "monkeysintown"
+    tagName: v{{projectVersion}}
+    overwrite: true
+    commitAuthor:
+      name: "Aleksandar Vidakovic"
+      email: "aleks@mifos.org"
+
+deploy:
+  maven:
+    artifactory:
+      mifos:
+        active: ALWAYS
+        url: "https://mifos.jfrog.io/artifactory/mifosx-gradle-local"
+        authorization: BEARER
+        snapshotSupported: true
+        applyMavenCentralRules: false
+        stagingRepositories:
+          - "modules/boot/application/build/staging-deploy"
+          - "modules/boot/core/build/staging-deploy"
+          - "modules/boot/mapping/build/staging-deploy"
+          - "modules/boot/persistence/relational/core/build/staging-deploy"
+          - "modules/boot/persistence/relational/imperative/build/staging-deploy"
+          - "modules/boot/persistence/relational/reactive/build/staging-deploy"
+          - "modules/boot/starter/imperative/build/staging-deploy"
+          - "modules/boot/starter/reactive/build/staging-deploy"
+          - "modules/boot/testing/build/staging-deploy"
+          - "modules/boot/transport/grpc/core/build/staging-deploy"
+          - "modules/boot/transport/grpc/imperative/build/staging-deploy"
+          - "modules/boot/transport/grpc/reactive/build/staging-deploy"
+          - "modules/boot/transport/rest/core/build/staging-deploy"
+          - "modules/boot/transport/rest/imperative/build/staging-deploy"
+          - "modules/boot/transport/rest/reactive/build/staging-deploy"
+          - "modules/boot/transport/rsocket/core/build/staging-deploy"
+          - "modules/boot/transport/rsocket/reactive/build/staging-deploy"
+          # TODO: enable when finished
+          # - "modules/boot/doc/build/staging-deploy"
