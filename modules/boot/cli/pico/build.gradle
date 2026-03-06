@@ -1,0 +1,16 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - CLI - Pico"
+
+dependencies {
+    implementation project(":mifos-commons-boot-core")
+    api "org.springframework.boot:spring-boot-starter"
+    api "info.picocli:picocli-spring-boot-starter"
+    api "info.picocli:picocli-shell-jline3"
+    api "org.jline:jline"
+    implementation "org.jline:jline-terminal-ffm"
+    // implementation "org.jline:jline-terminal-jni"
+    annotationProcessor "info.picocli:picocli-codegen"
+}
