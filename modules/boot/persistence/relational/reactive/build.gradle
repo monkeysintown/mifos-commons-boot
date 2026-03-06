@@ -1,0 +1,13 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - Persistence - Relational - Reactive"
+
+dependencies {
+    implementation project(":mifos-commons-boot-persistence-relational-core")
+    api "org.springframework.boot:spring-boot-starter-data-r2dbc"
+    api "com.infobip:infobip-spring-data-r2dbc-querydsl-boot-starter"
+    api "io.github.openfeign.querydsl:querydsl-sql-spatial"
+    api "io.github.openfeign.querydsl:querydsl-sql-spring"
+}
