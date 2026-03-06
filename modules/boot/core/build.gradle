@@ -1,0 +1,16 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - Core"
+
+dependencies {
+    api "jakarta.validation:jakarta.validation-api"
+    api "org.springframework.data:spring-data-commons"
+    api "org.aspectj:aspectjweaver"
+    api "org.springframework.modulith:spring-modulith-api"
+    implementation "org.hibernate.validator:hibernate-validator"
+    compileOnly "com.fasterxml.jackson.core:jackson-annotations"
+    compileOnly "io.swagger.core.v3:swagger-annotations-jakarta"
+    compileOnly "org.springframework.boot:spring-boot-starter"
+}

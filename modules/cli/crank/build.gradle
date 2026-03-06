@@ -1,0 +1,96 @@
+plugins {
+    id "application"
+    id "distribution"
+    id "org.springframework.boot"
+    id "org.mifos.convention.project.boot.base"
+}
+
+description = "Mifos Initiative - Crank"
+
+dependencies {
+    implementation project(":mifos-commons-boot-application")
+
+    implementation "org.springframework.boot:spring-boot-autoconfigure"
+    implementation "org.springframework.boot:spring-boot-starter-aspectj"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "org.springframework.modulith:spring-modulith-starter-core"
+    implementation "org.springframework.shell:spring-shell-starter-jansi"
+
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+
+    implementation "io.pebbletemplates:pebble"
+    implementation "tools.jackson.dataformat:jackson-dataformat-yaml"
+
+    testImplementation "org.springframework.modulith:spring-modulith-starter-test"
+}
+
+springBoot {
+    buildInfo {
+        properties {
+            artifact = "${base.archivesName}"
+            version = "${project.version}"
+            group = "${project.group}"
+            name = "${project.description}"
+        }
+    }
+}
+
+bootJar {
+    mainClass = "org.mifos.crank.Main"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveClassifier = "boot"
+
+    classpath configurations.developmentOnly
+}
+
+bootRun {
+    systemProperty "springAot", "true"
+    systemProperty "reactor.netty.http.server.accessLogEnabled", "true"
+    sourceResources sourceSets.main
+    environment = [
+            "SPRING_CLOUD_CONFIG_DISCOVERY_ENABLED": "false"
+    ]
+}
+
+bootBuildImage {
+    buildpacks = [
+            "paketobuildpacks/ca-certificates",
+            "paketobuildpacks/azul-zulu",
+            // see: https://paketo.io/docs/howto/sbom/
+            "paketobuildpacks/syft",
+            "paketobuildpacks/executable-jar",
+            "paketobuildpacks/dist-zip",
+            "paketobuildpacks/spring-boot",
+            "paketobuildpacks/environment-variables",
+    ]
+
+    environment["BP_JVM_VERSION"] = "25"
+    environment["BP_JVM_TYPE"] = "JRE"
+    environment["BPE_DELIM_JAVA_TOOL_OPTIONS"] = " "
+    environment["BPE_APPEND_JAVA_TOOL_OPTIONS"] = "-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Duser.timezone=UTC -Djava.security.egd=file:/dev/./urandom"
+    environment["BP_JVM_JLINK_ENABLED"] = "true"
+    environment["BP_NATIVE_IMAGE"] = "false"
+    environment["BP_SPRING_CLOUD_BINDINGS_DISABLED"] = "true"
+
+    imageName = "mifos/crank"
+    tags = [
+            "mifos/crank:${project.version}"
+    ]
+
+    buildCache {
+        volume {
+            name = "cache-${project.name}.build"
+        }
+    }
+    launchCache {
+        volume {
+            name = "cache-${project.name}.launch"
+        }
+    }
+}
+
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version)
+    }
+}

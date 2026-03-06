@@ -1,0 +1,28 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+ * distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+package org.mifos.commons.boot.core;
+
+import lombok.experimental.UtilityClass;
+
+/**
+ * Utility class holding constant values used throughout the Mifos messaging system.
+ *
+ * <p>This class defines base paths, prefixes, and specific message keys for resolving internationalized messages and
+ * error codes within the Mifos application.
+ *
+ * <p>Since this is a utility class (annotated with Lombok's {@code @UtilityClass}), it is not intended to be
+ * instantiated, and no public constructor is provided.
+ *
+ * @since 1.0.0
+ * @author <a href="https://github.com/vidakovic" target="_blank">Aleksandar Vidakovic</a>
+ * @see java.util.ResourceBundle
+ * @see UtilityClass
+ */
+@UtilityClass
+public class MifosConstants {
+    public static final String MIFOS_PACKAGE_BASE = "org.mifos";
+    public static final String MIFOS_MESSAGE_BASE = "org/mifos";
+    public static final String MIFOS_PROPERTIES_PREFIX = "mifos";
+}

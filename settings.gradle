@@ -1,0 +1,81 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral().content {
+            excludeModule("javax.media", "jai_core")
+        }
+        gradlePluginPortal()
+        maven {
+            url = uri("https://central.sonatype.com/repository/maven-snapshots")
+        }
+        maven {
+            url = uri("https://mifos.jfrog.io/artifactory/mifosx-gradle-local")
+        }
+    }
+
+    dependencies {
+        classpath "org.mifos.conventions:mifos-conventions-gradle-base-java:0.1.0-SNAPSHOT"
+    }
+}
+
+apply plugin: "org.mifos.conventions.gradle.base.layout"
+
+rootProject.name = "mifos-commons-boot"
+
+
+mifos {
+    project {
+        groupId = "org.mifos.commons.boot"
+        description = "Mifos Commons Boot Library"
+        basePackage = "org.mifos.commons.boot"
+        inceptionYear = "2026"
+    }
+    developers {
+        "vidakovic" {
+            firstname = "Aleksandar"
+            lastname = "Vidakovic"
+            email = "aleks@mifos.org"
+            timezone = "UTC+2"
+            roles = ["developer", "architect"]
+        }
+    }
+}
+
+include(":mifos-commons-boot-core")
+project(":mifos-commons-boot-core").projectDir = file("${rootDir}/modules/boot/core")
+include(":mifos-commons-boot-persistence-relational-core")
+project(":mifos-commons-boot-persistence-relational-core").projectDir = file("${rootDir}/modules/boot/persistence/relational/core")
+include(":mifos-commons-boot-persistence-relational-imperative")
+project(":mifos-commons-boot-persistence-relational-imperative").projectDir = file("${rootDir}/modules/boot/persistence/relational/imperative")
+include(":mifos-commons-boot-persistence-relational-reactive")
+project(":mifos-commons-boot-persistence-relational-reactive").projectDir = file("${rootDir}/modules/boot/persistence/relational/reactive")
+include(":mifos-commons-boot-mapping")
+project(":mifos-commons-boot-mapping").projectDir = file("${rootDir}/modules/boot/mapping")
+include(":mifos-commons-boot-service")
+project(":mifos-commons-boot-service").projectDir = file("${rootDir}/modules/boot/service")
+include(":mifos-commons-boot-transport-rest-core")
+project(":mifos-commons-boot-transport-rest-core").projectDir = file("${rootDir}/modules/boot/transport/rest/core")
+include(":mifos-commons-boot-transport-rest-imperative")
+project(":mifos-commons-boot-transport-rest-imperative").projectDir = file("${rootDir}/modules/boot/transport/rest/imperative")
+include(":mifos-commons-boot-transport-rest-reactive")
+project(":mifos-commons-boot-transport-rest-reactive").projectDir = file("${rootDir}/modules/boot/transport/rest/reactive")
+include(":mifos-commons-boot-transport-grpc-core")
+project(":mifos-commons-boot-transport-grpc-core").projectDir = file("${rootDir}/modules/boot/transport/grpc/core")
+include(":mifos-commons-boot-transport-grpc-imperative")
+project(":mifos-commons-boot-transport-grpc-imperative").projectDir = file("${rootDir}/modules/boot/transport/grpc/imperative")
+include(":mifos-commons-boot-transport-grpc-reactive")
+project(":mifos-commons-boot-transport-grpc-reactive").projectDir = file("${rootDir}/modules/boot/transport/grpc/reactive")
+include(":mifos-commons-boot-transport-rsocket-core")
+project(":mifos-commons-boot-transport-rsocket-core").projectDir = file("${rootDir}/modules/boot/transport/rsocket/core")
+include(":mifos-commons-boot-transport-rsocket-reactive")
+project(":mifos-commons-boot-transport-rsocket-reactive").projectDir = file("${rootDir}/modules/boot/transport/rsocket/reactive")
+include(":mifos-commons-boot-starter-imperative")
+project(":mifos-commons-boot-starter-imperative").projectDir = file("${rootDir}/modules/boot/starter/imperative")
+include(":mifos-commons-boot-starter-reactive")
+project(":mifos-commons-boot-starter-reactive").projectDir = file("${rootDir}/modules/boot/starter/reactive")
+include(":mifos-commons-boot-testing")
+project(":mifos-commons-boot-testing").projectDir = file("${rootDir}/modules/boot/testing")
+include(":mifos-commons-boot-application")
+project(":mifos-commons-boot-application").projectDir = file("${rootDir}/modules/boot/application")
+include(":mifos-commons-boot-doc")
+project(":mifos-commons-boot-doc").projectDir = file("${rootDir}/modules/boot/doc")

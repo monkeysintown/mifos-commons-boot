@@ -1,0 +1,20 @@
+= Mifos Commons Java
+
+== Build
+
+[source,bash]
+----
+./gradlew mifosConfigUnzip
+./gradlew clean build
+./gradlew clean build publish publishToMavenLocal
+# ./gradlew spdxSbomForRelease
+# ./gradlew clean build generateBom --configuration=releaseRuntimeClasspath
+----
+
+== Documentation
+
+[source,bash]
+----
+./gradlew asciidoctorZip --no-configuration-cache
+----
+

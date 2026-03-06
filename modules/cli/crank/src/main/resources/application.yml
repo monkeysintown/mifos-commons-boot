@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: "Crank... out code!!!"
+  main:
+    banner-mode: console
+    web-application-type: none
+
+
+logging:
+  file:
+    name: ./build/crank.log
+  level:
+    root: warn

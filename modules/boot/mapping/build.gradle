@@ -1,0 +1,17 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - Mapping"
+
+dependencies {
+    implementation "org.springframework:spring-context"
+    compileOnly "tools.jackson.core:jackson-databind"
+    compileOnly "org.mapstruct:mapstruct"
+    compileOnly "org.mapstruct:mapstruct-processor"
+    compileOnly "org.mapstruct.extensions.spring:mapstruct-spring-extensions"
+    compileOnly "org.mapstruct.extensions.spring:mapstruct-spring-test-extensions"
+    compileOnly "org.mapstruct.extensions.spring:mapstruct-spring-annotations"
+    annotationProcessor "org.mapstruct:mapstruct-processor"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+}

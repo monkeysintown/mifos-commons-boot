@@ -1,0 +1,15 @@
+${AnsiColor.GREEN}
+  ______   _______    ______   __    __  __    __
+ /      \ /       \  /      \ /  \  /  |/  |  /  |
+/$$$$$$  |$$$$$$$  |/$$$$$$  |$$  \ $$ |$$ | /$$/
+$$ |  $$/ $$ |__$$ |$$ |__$$ |$$$  \$$ |$$ |/$$/
+$$ |      $$    $$< $$    $$ |$$$$  $$ |$$  $$<
+$$ |   __ $$$$$$$  |$$$$$$$$ |$$ $$ $$ |$$$$$  \
+$$ \__/  |$$ |  $$ |$$ |  $$ |$$ |$$$$ |$$ |$$  \
+$$    $$/ $$ |  $$ |$$ |  $$ |$$ | $$$ |$$ | $$  |
+ $$$$$$/  $$/   $$/ $$/   $$/ $$/   $$/ $$/   $$/
+
+${AnsiColor.BRIGHT_YELLOW}${spring.application.name} ${application.version}
+
+${AnsiColor.BRIGHT_WHITE}Powered by Spring Boot ${spring-boot.version} (PID: ${PID})${AnsiColor.DEFAULT}
+

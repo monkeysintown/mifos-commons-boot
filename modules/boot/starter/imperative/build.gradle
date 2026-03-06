@@ -1,0 +1,17 @@
+plugins {
+    id "org.mifos.conventions.gradle.base.java"
+}
+
+description = "Mifos Initiative - Commons - Boot - Starter - Imperative"
+
+dependencies {
+    api project(":mifos-commons-boot-core")
+    api project(":mifos-commons-boot-mapping")
+    api project(":mifos-commons-boot-service")
+    api project(":mifos-commons-boot-application")
+    api project(":mifos-commons-boot-testing")
+    api project(":mifos-commons-boot-persistence-relational-imperative")
+    api project(":mifos-commons-boot-transport-rest-imperative")
+    api "org.springframework.boot:spring-boot-starter"
+    api "org.springframework.boot:spring-boot-starter-validation"
+}
