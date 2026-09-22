@@ -47,7 +47,7 @@ public class MifosCommonsBootProperties {
     private String errorUrl = "https://doc.mifos.org/projects/common/errors";
     private String tui;
 
-    public static enum MifosCommonsBootTuiType {
+    public enum MifosCommonsBootTuiType {
         PICO, SHELL, TAMBOUI
     }
 }
